@@ -8,26 +8,22 @@ namespace supermarket
     public class Offer
     {
         private readonly SpecialOfferType _offerType;
-        private Product _product;
         private readonly double _argument;
+
+        public Product Product { get; }
 
         public Offer(SpecialOfferType offerType, Product product, double argument)
         {
             this._offerType = offerType;
             this._argument = argument;
-            this._product = product;
+            this.Product = product;
         }
 
-        public Discount GetDiscount(Product product, double quantity, double unitPrice)
+        public virtual Discount GetDiscount(Product product, double quantity, double unitPrice)
         {
             var quantityAsInt = (int)quantity;
             var x = 1;
-            if (this._offerType == SpecialOfferType.ThreeForTwo)
-            {
-                x = 3;
-
-            }
-            else if (this._offerType == SpecialOfferType.TwoForAmount)
+            if (this._offerType == SpecialOfferType.TwoForAmount)
             {
                 x = 2;
                 if (quantityAsInt >= 2)
@@ -43,11 +39,6 @@ namespace supermarket
                 x = 5;
             }
             var numberOfXs = quantityAsInt / x;
-            if (this._offerType == SpecialOfferType.ThreeForTwo && quantityAsInt > 2)
-            {
-                var discountAmount = quantity * unitPrice - ((numberOfXs * 2 * unitPrice) + quantityAsInt % 3 * unitPrice);
-                return new Discount(product, "3 for 2", discountAmount);
-            }
             if (this._offerType == SpecialOfferType.TenPercentDiscount)
             {
                 return new Discount(product, this._argument + "% off", quantity * unitPrice * this._argument / 100.0);

@@ -35,7 +35,7 @@ namespace supermarket
             teller.AddSpecialOffer(SpecialOfferType.TenPercentDiscount, apples, 20.0);
             teller.AddSpecialOffer(SpecialOfferType.TenPercentDiscount, rice, 10.0);
             teller.AddSpecialOffer(SpecialOfferType.FiveForAmount, toothpaste, 7.49);
-            teller.AddSpecialOffer(SpecialOfferType.ThreeForTwo, toothbrush, 0);
+            teller.AddSpecialOffer(new GetSomeForFree(toothbrush, 2, 1));
             teller.AddSpecialOffer(SpecialOfferType.TwoForAmount, cherryTomato, 0.99);
 
             var receiptPrinter = new ReceiptPrinter();

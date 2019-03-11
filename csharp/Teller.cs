@@ -14,6 +14,11 @@ namespace supermarket
             this._catalog = catalog;
         }
 
+        public void AddSpecialOffer(Offer offer)
+        {
+            this._offers[offer.Product] = offer;
+        }
+
         public void AddSpecialOffer(SpecialOfferType offerType, Product product, double argument)
         {
             this._offers[product] = new Offer(offerType, product, argument);
