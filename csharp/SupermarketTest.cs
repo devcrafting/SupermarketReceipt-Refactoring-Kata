@@ -1,6 +1,8 @@
+using System.ComponentModel.Design;
 using ApprovalTests;
 using ApprovalTests.Reporters;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NFluent;
 
 namespace supermarket
 {
@@ -43,6 +45,17 @@ namespace supermarket
             var receipt = teller.ChecksOutArticlesFrom(cart);
 
             Approvals.Verify(receiptPrinter.PrintReceipt(receipt));
+        }
+
+        [TestMethod]
+        public void GetSomeForFree_should_return_discount_for_2_free_for_3_bought()
+        {
+            var product = new Product("test", ProductUnit.Each);
+            var getSomeForFree = new GetSomeForFree(product, 3, 2);
+
+            var discount = getSomeForFree.GetDiscount(product, 6, 0.99);
+
+            Check.That(discount.DiscountAmount).IsCloseTo(1.98, 0.001);
         }
     }
 }

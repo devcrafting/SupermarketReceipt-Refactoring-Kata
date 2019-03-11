@@ -44,6 +44,9 @@
     <Reference Include="ApprovalUtilities.Net45, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\ApprovalUtilities.3.0.13\lib\net45\ApprovalUtilities.Net45.dll</HintPath>
     </Reference>
+    <Reference Include="NFluent, Version=2.4.0.216, Culture=neutral, PublicKeyToken=18828b37b84b1437, processorArchitecture=MSIL">
+      <HintPath>packages\NFluent.2.4.0\lib\net45\NFluent.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
