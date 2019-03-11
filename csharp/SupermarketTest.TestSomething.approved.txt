@@ -13,6 +13,6 @@ cherry tomato                       2.07
 10% off(rice)                      -0.25
 3 for 2(toothbrush)                -0.99
 5 for 7,49(toothpaste)             -1.46
-2 for 0,99(cherry tomato)         --0.11
+2 for 0,99(cherry tomato)          -0.39
 
-Total:                             20.65
+Total:                             20.15
