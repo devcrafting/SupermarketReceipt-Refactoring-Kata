@@ -59,9 +59,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="GetSomeForFree.cs" />
-    <Compile Include="PackForPrice.cs" />
-    <Compile Include="PercentDiscount.cs" />
+    <Compile Include="Offers\GetSomeForFree.cs" />
+    <Compile Include="Offers\PackForPrice.cs" />
+    <Compile Include="Offers\PercentDiscount.cs" />
     <Compile Include="ReceiptPrinter.cs" />
     <Compile Include="Discount.cs" />
     <Compile Include="Offer.cs" />

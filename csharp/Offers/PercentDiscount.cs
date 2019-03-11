@@ -4,7 +4,7 @@ namespace supermarket
     {
         private readonly double _percentToDiscount;
 
-        public PercentDiscount(Product product, double percentToDiscount) : base(SpecialOfferType.TenPercentDiscount, product, percentToDiscount)
+        public PercentDiscount(Product product, double percentToDiscount) : base(product)
         {
             _percentToDiscount = percentToDiscount;
         }

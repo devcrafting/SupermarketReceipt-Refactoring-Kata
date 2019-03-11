@@ -1,28 +1,15 @@
 namespace supermarket
 {
-    public enum SpecialOfferType
+    public abstract class Offer
     {
-        ThreeForTwo, TenPercentDiscount, TwoForAmount, FiveForAmount
-    }
-
-    public class Offer
-    {
-        private readonly SpecialOfferType _offerType;
-        private readonly double _argument;
+        protected Offer(Product product)
+        {
+            Product = product;
+        }
 
         public Product Product { get; }
 
-        public Offer(SpecialOfferType offerType, Product product, double argument)
-        {
-            this._offerType = offerType;
-            this._argument = argument;
-            this.Product = product;
-        }
-
-        public virtual Discount GetDiscount(Product product, double quantity, double unitPrice)
-        {
-            return null;
-        }
+        public abstract Discount GetDiscount(Product product, double quantity, double unitPrice);
     }
 }
 

@@ -19,11 +19,6 @@ namespace supermarket
             this._offers[offer.Product] = offer;
         }
 
-        public void AddSpecialOffer(SpecialOfferType offerType, Product product, double argument)
-        {
-            this._offers[product] = new Offer(offerType, product, argument);
-        }
-
         public Receipt ChecksOutArticlesFrom(ShoppingCart theCart)
         {
             var receipt = new Receipt();

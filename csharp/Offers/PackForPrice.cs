@@ -5,7 +5,7 @@
         private readonly double _nbInPack;
         private readonly double _price;
 
-        public PackForPrice(Product product, double nbInPack, double price) : base(SpecialOfferType.TwoForAmount, product, price)
+        public PackForPrice(Product product, double nbInPack, double price) : base(product)
         {
             _nbInPack = nbInPack;
             _price = price;

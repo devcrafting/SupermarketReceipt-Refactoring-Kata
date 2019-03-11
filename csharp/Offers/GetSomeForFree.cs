@@ -2,7 +2,7 @@ namespace supermarket
 {
     public class GetSomeForFree : Offer
     {
-        public GetSomeForFree(Product product, double nbToApply, double nbFree) : base(SpecialOfferType.ThreeForTwo, product, 0)
+        public GetSomeForFree(Product product, double nbToApply, double nbFree) : base(product)
         {
         }
 
