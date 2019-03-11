@@ -37,18 +37,10 @@ namespace supermarket
 
         public void HandleOffers(Receipt receipt, Dictionary<Product, Offer> offers, SupermarketCatalog catalog)
         {
-            foreach (var p in _productQuantities.Keys)
+            foreach (var offer in offers)
             {
-                var quantity = _productQuantities[p];
-                if (offers.ContainsKey(p))
-                {
-                    var offer = offers[p];
-                    var unitPrice = catalog.GetUnitPrice(p);
-                    Discount discount = offer.GetDiscount(p, quantity, unitPrice);
-                    if (discount != null)
-                        receipt.AddDiscount(discount);
-                }
-
+                var discount = offer.Value.GetDiscount(_productQuantities, catalog);
+                if (discount != null) receipt.AddDiscount(discount);
             }
         }
     }
