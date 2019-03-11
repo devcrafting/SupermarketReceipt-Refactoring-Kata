@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="GetSomeForFree.cs" />
     <Compile Include="PackForPrice.cs" />
+    <Compile Include="PercentDiscount.cs" />
     <Compile Include="ReceiptPrinter.cs" />
     <Compile Include="Discount.cs" />
     <Compile Include="Offer.cs" />

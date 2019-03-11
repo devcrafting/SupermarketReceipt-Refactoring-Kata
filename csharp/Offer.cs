@@ -21,12 +21,6 @@ namespace supermarket
 
         public virtual Discount GetDiscount(Product product, double quantity, double unitPrice)
         {
-            var quantityAsInt = (int)quantity;
-            if (this._offerType == SpecialOfferType.TenPercentDiscount)
-            {
-                return new Discount(product, this._argument + "% off", quantity * unitPrice * this._argument / 100.0);
-            }
-
             return null;
         }
     }

@@ -32,8 +32,8 @@ namespace supermarket
             cart.AddItemQuantity(cherryTomato, 3);
 
             var teller = new Teller(catalog);
-            teller.AddSpecialOffer(SpecialOfferType.TenPercentDiscount, apples, 20.0);
-            teller.AddSpecialOffer(SpecialOfferType.TenPercentDiscount, rice, 10.0);
+            teller.AddSpecialOffer(new PercentDiscount(apples, 20.0));
+            teller.AddSpecialOffer(new PercentDiscount(rice, 10.0));
             teller.AddSpecialOffer(new PackForPrice(toothpaste, 5, 7.49));
             teller.AddSpecialOffer(new GetSomeForFree(toothbrush, 2, 1));
             teller.AddSpecialOffer(new PackForPrice(cherryTomato, 2, 0.99));
