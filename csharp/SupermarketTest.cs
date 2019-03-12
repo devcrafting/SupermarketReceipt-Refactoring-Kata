@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.Design;
 using ApprovalTests;
 using ApprovalTests.Reporters;
@@ -56,6 +57,36 @@ namespace supermarket
             var discount = getSomeForFree.GetDiscount(product, 6, 0.99);
 
             Check.That(discount.DiscountAmount).IsCloseTo(1.98, 0.001);
+        }
+
+        [TestMethod]
+        public void Bundle_of_toothpaste_and_toothbrush_should_return_10_percent_discount()
+        {
+            SupermarketCatalog catalog = new FakeCatalog();
+            var toothbrush = new Product("toothbrush", ProductUnit.Each);
+            catalog.AddProduct(toothbrush, 0.99);
+            var toothpaste = new Product("toothpaste", ProductUnit.Each);
+            catalog.AddProduct(toothpaste, 1.79);
+            var bundle = new Bundle(new[] { toothpaste, toothbrush }, 10);
+
+            var discount = bundle.GetDiscount(new Dictionary<Product, double> {[toothpaste] = 1, [toothbrush] = 1}, catalog);
+
+            Check.That(discount.DiscountAmount).IsCloseTo(0.278, 0.001);
+        }
+
+        [TestMethod]
+        public void Multiple_bundles_of_toothpaste_and_toothbrush_should_return_10_percent_discount()
+        {
+            SupermarketCatalog catalog = new FakeCatalog();
+            var toothbrush = new Product("toothbrush", ProductUnit.Each);
+            catalog.AddProduct(toothbrush, 0.99);
+            var toothpaste = new Product("toothpaste", ProductUnit.Each);
+            catalog.AddProduct(toothpaste, 1.79);
+            var bundle = new Bundle(new[] { toothpaste, toothbrush }, 10);
+
+            var discount = bundle.GetDiscount(new Dictionary<Product, double> { [toothpaste] = 2, [toothbrush] = 2 }, catalog);
+
+            Check.That(discount.DiscountAmount).IsCloseTo(0.556, 0.001);
         }
     }
 }

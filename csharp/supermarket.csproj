@@ -62,6 +62,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Bundle.cs" />
     <Compile Include="IOffer.cs" />
     <Compile Include="Offers\GetSomeForFree.cs" />
     <Compile Include="Offers\IDiscountOneProduct.cs" />
