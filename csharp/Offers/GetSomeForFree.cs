@@ -1,17 +1,17 @@
 namespace supermarket
 {
-    public class GetSomeForFree : Offer
+    public class GetSomeForFree : IDiscountOneProduct
     {
         private readonly double _nbToApply;
         private readonly double _nbPerOffer;
 
-        public GetSomeForFree(Product product, double nbToApply, double nbFree) : base(product)
+        public GetSomeForFree(double nbToApply, double nbFree)
         {
             _nbToApply = nbToApply;
             _nbPerOffer = nbToApply + nbFree;
         }
 
-        public override Discount GetDiscount(Product product, double quantity, double unitPrice)
+        public Discount GetDiscount(Product product, double quantity, double unitPrice)
         {
             if (quantity <= _nbToApply) return null;
             var nbOfOffer = (int) (quantity / _nbPerOffer);

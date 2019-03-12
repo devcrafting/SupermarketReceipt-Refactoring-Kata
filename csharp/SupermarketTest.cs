@@ -34,11 +34,11 @@ namespace supermarket
             cart.AddItemQuantity(cherryTomato, 3);
 
             var teller = new Teller(catalog);
-            teller.AddSpecialOffer(new PercentDiscount(apples, 20.0));
-            teller.AddSpecialOffer(new PercentDiscount(rice, 10.0));
-            teller.AddSpecialOffer(new GetSomeForFree(toothbrush, 2, 1));
-            teller.AddSpecialOffer(new PackForPrice(toothpaste, 5, 7.49));
-            teller.AddSpecialOffer(new PackForPrice(cherryTomato, 2, 0.99));
+            teller.AddSpecialOffer(new Offer(apples, new PercentDiscount(20.0)));
+            teller.AddSpecialOffer(new Offer(rice, new PercentDiscount(10.0)));
+            teller.AddSpecialOffer(new Offer(toothbrush, new GetSomeForFree(2, 1)));
+            teller.AddSpecialOffer(new Offer(toothpaste, new PackForPrice(5, 7.49)));
+            teller.AddSpecialOffer(new Offer(cherryTomato, new PackForPrice(2, 0.99)));
 
             var receiptPrinter = new ReceiptPrinter();
 
@@ -51,7 +51,7 @@ namespace supermarket
         public void GetSomeForFree_should_return_discount_for_2_free_for_3_bought()
         {
             var product = new Product("test", ProductUnit.Each);
-            var getSomeForFree = new GetSomeForFree(product, 3, 2);
+            var getSomeForFree = new GetSomeForFree(3, 2);
 
             var discount = getSomeForFree.GetDiscount(product, 6, 0.99);
 

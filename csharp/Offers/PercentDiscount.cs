@@ -1,15 +1,15 @@
 namespace supermarket
 {
-    public class PercentDiscount : Offer
+    public class PercentDiscount : IDiscountOneProduct
     {
         private readonly double _percentToDiscount;
 
-        public PercentDiscount(Product product, double percentToDiscount) : base(product)
+        public PercentDiscount(double percentToDiscount)
         {
             _percentToDiscount = percentToDiscount;
         }
 
-        public override Discount GetDiscount(Product product, double quantity, double unitPrice)
+        public Discount GetDiscount(Product product, double quantity, double unitPrice)
         {
             return new Discount(product, _percentToDiscount + "% off", quantity * unitPrice * _percentToDiscount / 100.0);
         }

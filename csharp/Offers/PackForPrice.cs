@@ -1,17 +1,17 @@
 ﻿namespace supermarket
 {
-    public class PackForPrice : Offer
+    public class PackForPrice : IDiscountOneProduct
     {
         private readonly double _nbInPack;
         private readonly double _price;
 
-        public PackForPrice(Product product, double nbInPack, double price) : base(product)
+        public PackForPrice(double nbInPack, double price)
         {
             _nbInPack = nbInPack;
             _price = price;
         }
 
-        public override Discount GetDiscount(Product product, double quantity, double unitPrice)
+        public Discount GetDiscount(Product product, double quantity, double unitPrice)
         {
             if (quantity < _nbInPack) return null;
 
