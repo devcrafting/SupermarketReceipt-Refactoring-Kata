@@ -67,7 +67,7 @@ namespace supermarket
             catalog.AddProduct(toothbrush, 0.99);
             var toothpaste = new Product("toothpaste", ProductUnit.Each);
             catalog.AddProduct(toothpaste, 1.79);
-            var bundle = new Bundle(new[] { toothpaste, toothbrush }, 10);
+            var bundle = new Bundle(new[] { toothpaste, toothbrush }, new PercentDiscount(10));
 
             var discount = bundle.GetDiscount(new Dictionary<Product, double> {[toothpaste] = 1, [toothbrush] = 1}, catalog);
 
@@ -82,7 +82,7 @@ namespace supermarket
             catalog.AddProduct(toothbrush, 0.99);
             var toothpaste = new Product("toothpaste", ProductUnit.Each);
             catalog.AddProduct(toothpaste, 1.79);
-            var bundle = new Bundle(new[] { toothpaste, toothbrush }, 10);
+            var bundle = new Bundle(new[] { toothpaste, toothbrush }, new PercentDiscount(10));
 
             var discount = bundle.GetDiscount(new Dictionary<Product, double> { [toothpaste] = 2, [toothbrush] = 2 }, catalog);
 

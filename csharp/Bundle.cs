@@ -6,12 +6,12 @@ namespace supermarket
     public class Bundle : IOffer
     {
         private readonly IEnumerable<Product> _products;
-        private readonly double _percentDiscount;
+        private readonly IDiscountOneProduct _discounter;
 
-        public Bundle(IEnumerable<Product> products, double percentDiscount)
+        public Bundle(IEnumerable<Product> products, IDiscountOneProduct discounter)
         {
             _products = products;
-            _percentDiscount = percentDiscount;
+            _discounter = discounter;
         }
 
         public Discount GetDiscount(IDictionary<Product, double> quantitiesByProduct, SupermarketCatalog catalog)
@@ -22,8 +22,8 @@ namespace supermarket
                     var found = quantitiesByProduct.TryGetValue(product, out var quantity);
                     return found ? quantity : 0;
                 }).Max();
-            var discountedAmount = _products.Select(catalog.GetUnitPrice).Sum() * _percentDiscount / 100 * nbBundles;
-            return new Discount(new Product("bundle", ProductUnit.Each), "10% off", discountedAmount);
+            var bundlePriceWithoutDiscount = _products.Select(catalog.GetUnitPrice).Sum();
+            return _discounter.GetDiscount(new Product("bundle", ProductUnit.Each), nbBundles, bundlePriceWithoutDiscount);
         }
     }
 }
