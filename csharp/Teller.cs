@@ -7,16 +7,16 @@ namespace supermarket
     {
 
         private readonly SupermarketCatalog _catalog;
-        private readonly Dictionary<Product, Offer> _offers = new Dictionary<Product, Offer>();
+        private readonly List<IOffer> _offers = new List<IOffer>();
 
         public Teller(SupermarketCatalog catalog)
         {
             this._catalog = catalog;
         }
 
-        public void AddSpecialOffer(Offer offer)
+        public void AddSpecialOffer(SingleProductOffer singleProductOffer)
         {
-            this._offers[offer.Product] = offer;
+            this._offers.Add(singleProductOffer);
         }
 
         public Receipt ChecksOutArticlesFrom(ShoppingCart theCart)

@@ -34,11 +34,11 @@ namespace supermarket
             cart.AddItemQuantity(cherryTomato, 3);
 
             var teller = new Teller(catalog);
-            teller.AddSpecialOffer(new Offer(apples, new PercentDiscount(20.0)));
-            teller.AddSpecialOffer(new Offer(rice, new PercentDiscount(10.0)));
-            teller.AddSpecialOffer(new Offer(toothbrush, new GetSomeForFree(2, 1)));
-            teller.AddSpecialOffer(new Offer(toothpaste, new PackForPrice(5, 7.49)));
-            teller.AddSpecialOffer(new Offer(cherryTomato, new PackForPrice(2, 0.99)));
+            teller.AddSpecialOffer(new SingleProductOffer(apples, new PercentDiscount(20.0)));
+            teller.AddSpecialOffer(new SingleProductOffer(rice, new PercentDiscount(10.0)));
+            teller.AddSpecialOffer(new SingleProductOffer(toothbrush, new GetSomeForFree(2, 1)));
+            teller.AddSpecialOffer(new SingleProductOffer(toothpaste, new PackForPrice(5, 7.49)));
+            teller.AddSpecialOffer(new SingleProductOffer(cherryTomato, new PackForPrice(2, 0.99)));
 
             var receiptPrinter = new ReceiptPrinter();
 

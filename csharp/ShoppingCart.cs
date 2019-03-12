@@ -35,11 +35,11 @@ namespace supermarket
             }
         }
 
-        public void HandleOffers(Receipt receipt, Dictionary<Product, Offer> offers, SupermarketCatalog catalog)
+        public void HandleOffers(Receipt receipt, IEnumerable<IOffer> offers, SupermarketCatalog catalog)
         {
             foreach (var offer in offers)
             {
-                var discount = offer.Value.GetDiscount(_productQuantities, catalog);
+                var discount = offer.GetDiscount(_productQuantities, catalog);
                 if (discount != null) receipt.AddDiscount(discount);
             }
         }

@@ -62,13 +62,14 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="IOffer.cs" />
     <Compile Include="Offers\GetSomeForFree.cs" />
     <Compile Include="Offers\IDiscountOneProduct.cs" />
     <Compile Include="Offers\PackForPrice.cs" />
     <Compile Include="Offers\PercentDiscount.cs" />
     <Compile Include="ReceiptPrinter.cs" />
     <Compile Include="Discount.cs" />
-    <Compile Include="Offer.cs" />
+    <Compile Include="SingleProductOffer.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Receipt.cs" />
     <Compile Include="ShoppingCart.cs" />
