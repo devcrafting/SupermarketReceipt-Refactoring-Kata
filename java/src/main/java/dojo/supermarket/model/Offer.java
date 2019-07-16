@@ -13,6 +13,10 @@ public class Offer {
         this.product = product;
     }
 
+    protected Offer() {
+        product = null; // useless but refactoring not completely done
+    }
+
     Product getProduct() {
         return this.product;
     }

@@ -8,14 +8,18 @@ import java.util.Map;
 public class Teller {
 
     private final SupermarketCatalog catalog;
-    private Map<Product, Offer> offers = new HashMap<>();
+    private List<Offer> offers = new ArrayList<>();
 
     public Teller(SupermarketCatalog catalog) {
         this.catalog = catalog;
     }
 
     public void addSpecialOffer(SpecialOfferType offerType, Product product, double argument) {
-        this.offers.put(product, new Offer(offerType, product, argument));
+        this.offers.add(new Offer(offerType, product, argument));
+    }
+
+    public void addSpecialOffer(Offer offer) {
+        this.offers.add(offer);
     }
 
     public Receipt checksOutArticlesFrom(ShoppingCart theCart) {
@@ -35,7 +39,7 @@ public class Teller {
     }
 
     private void handleOffers(ShoppingCart theCart, Receipt receipt) {
-        for (Offer offer : this.offers.values()) {
+        for (Offer offer : this.offers) {
             if (offer.canApplyTo(theCart.productQuantities())) {
                 receipt.addDiscount(offer.getDiscount(theCart.productQuantities(), catalog));
             }

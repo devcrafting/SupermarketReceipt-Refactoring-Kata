@@ -139,4 +139,16 @@ public class Supermarket_should {
 
         assertEquals(1.5, receipt.getTotalPrice(), 0.01);
     }
+
+    @Test
+    public void apply_bundle_percent_offer() {
+        ShoppingCart cart = new ShoppingCart();
+        cart.addItemQuantity(toothbrush, 1);
+        cart.addItemQuantity(toothpaste, 1);
+        teller.addSpecialOffer(new PercentOnBundle(10, toothbrush, toothpaste));
+
+        Receipt receipt = teller.checksOutArticlesFrom(cart);
+
+        assertEquals(2.23, receipt.getTotalPrice(), 0.01);
+    }
 }
