@@ -1,5 +1,7 @@
 package dojo.supermarket.model;
 
+import java.util.Map;
+
 public class Offer {
     SpecialOfferType offerType;
     private final Product product;
@@ -13,6 +15,14 @@ public class Offer {
 
     Product getProduct() {
         return this.product;
+    }
+
+    public boolean canApplyTo(Map<Product, Double> productQuantities) {
+        return productQuantities.containsKey(product);
+    }
+
+    public Discount getDiscount(Map<Product, Double> productQuantities, SupermarketCatalog catalog) {
+        return getDiscount(productQuantities.get(product), catalog.getUnitPrice(product));
     }
 
     public Discount getDiscount(double quantity, double unitPrice) {
